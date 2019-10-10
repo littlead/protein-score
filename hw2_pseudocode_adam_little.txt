@@ -1,0 +1,36 @@
+# Create a class for amino acid properties
+
+# Set all of the parameter defaults to False
+class Aminoacid(self, polar=False, hydrophobic=False, small=False, charged=False, tiny=False, aliphatic=False, aromatic=False, ve_pos=False, ve_neg=False):
+    polar = self.polar
+    hydrophobic = self.hydrophobic
+    small = self.small
+    charged = self.charged
+    tiny = self.tiny
+    aliphatic = self.aliphatic
+    aromatic = self.aromatic
+    ve_pos = self.ve_pos
+    ve_neg = self.ve_neg
+
+# Create amino acid variables as instance of class,  only set parameters to true and leave default of false for all else
+p = Aminoacid(small=True)
+
+
+s1 = GWWPDT
+s2 = WRRKHY
+
+s1 = s1.lower()
+s2 = s2.lower()
+
+score = 0
+
+for i in s1:
+    for j in s2:
+        if i == j:
+            score += 5
+        elif i.hydrophobic == True and j.hydrophobic == True:
+            score += 1
+        elif (i.hydrophobic == True and j.hydrophobic == Flase) or (i.hydrophobic == False and j.hydrophobic == True):
+            score -= 5
+        else:
+            score += 0
