@@ -38,7 +38,6 @@ m = Aminoacid(name='M', polar=False, hydrophobic=True, small=False, charged=Fals
 f = Aminoacid(name='F', polar=False, hydrophobic=True, small=False, charged=False, tiny=False, aliphatic=False, aromatic=True, ve_pos=False, ve_neg=False)
 
 
-print(p.small)
 
 s1 = [g, w, w, p, d, t]
 s2 = [w, r, r, k, h, y]
@@ -46,23 +45,22 @@ s2 = [w, r, r, k, h, y]
 
 score = 0
 
-for i in s1:
-    for j in s2:
-        if i.name == j.name:
-            print("Amino acids {} and {} get a score of +5".format(i.name,j.name))
-            score += 5
-            print("Running total: {}".format(score))
-        elif i.hydrophobic == True and j.hydrophobic == True:
-            print("Amino acids {} and {} get a score of +1".format(i.name,j.name))
-            score += 1
-            print("Running total: {}".format(score))
-        elif (i.hydrophobic == True and j.hydrophobic == False) or (i.hydrophobic == False and j.hydrophobic == True):
-            print("Amino acids {} and {} get a score of -5".format(i.name,j.name))
-            score -= 5
-            print("Running total: {}".format(score))
-        else:
-            print("Amino acids {} and {} get a score of 0".format(i.name,j.name))
-            score += 0
-            print("Running total: {}".format(score))
+for acid in range(0, len(s1)):
+    if s1[acid].name == s2[acid].name:
+        print("Amino acids {} and {} get a score of +5".format(s1[acid].name, s2[acid].name))
+        score += 5
+        print("Running total: {}".format(score))
+    elif s1[acid].hydrophobic == True and s2[acid].hydrophobic == True:
+        print("Amino acids {} and {} get a score of +1".format(s1[acid].name, s2[acid].name))
+        score += 1
+        print("Running total: {}".format(score))
+    elif (s1[acid].hydrophobic == True and s2[acid].hydrophobic == False) or (s1[acid].hydrophobic == False and s2[acid].hydrophobic == True):
+        print("Amino acids {} and {} get a score of -5".format(s1[acid].name, s2[acid].name))
+        score -= 5
+        print("Running total: {}".format(score))
+    else:
+        print("Amino acids {} and {} get a score of 0".format(s1[acid].name, s2[acid].name))
+        score += 0
+        print("Running total: {}".format(score))
 
 print("The final score is {}".format(score))
